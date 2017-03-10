@@ -1,19 +1,10 @@
-var restify = require('restify');
+var express = require('express')
+var app = express()
 
-var server = restify.createServer({
-    name: 'uninfluxapp',
-    version: '1.0.0'
-});
+app.get('/', function (req, res) {
+  res.send('Hello World!')
+})
 
-server.use(restify.acceptParser(server.acceptable));
-server.use(restify.queryParser());
-server.use(restify.bodyParser());
-
-server.get('/', function (req, res, next) {
-    res.send("This hackathon is going to be awesome!");
-    return next();
-});
-
-server.listen(8080, function () {
-    console.log('%s server listening at %s', server.name, server.url);
-});
+app.listen(3000, function () {
+  console.log('Example app listening on port 3000!')
+})
